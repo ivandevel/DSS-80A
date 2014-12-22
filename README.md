@@ -1,5 +1,3 @@
-### README ###
-
 ### DSS-80A soldering station project. ###
 
 Main goals:
