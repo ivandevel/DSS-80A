@@ -114,9 +114,6 @@ FLASH_Lock(FLASH_MEMTYPE_DATA);       // re-lock data memory
   Soldering_TIM2_Config();
   
   Soldering_ADC_Config();
-
-  
-  //GPIO_Init(GPIOA, (GPIO_Pin_TypeDef)GPIO_PIN_3, GPIO_MODE_OUT_PP_HIGH_FAST);
   
   STM_EVAL_SEGInit(SEG1);
   STM_EVAL_SEGInit(SEG2);
@@ -166,9 +163,7 @@ FLASH_Lock(FLASH_MEMTYPE_DATA);       // re-lock data memory
     
   ssegSetBrightness(90);
   
-  Soldering_Main();
-
-  
+  Soldering_Main(); 
 }
 
 #ifdef USE_FULL_ASSERT

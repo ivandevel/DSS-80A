@@ -3,6 +3,7 @@
 #include "7-seg.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 /** Utilities
   *
@@ -168,7 +169,6 @@ Led_TypeDef Led;
 	}
 }
 
-
 void ssegWriteStr(char *str, uint8_t len, Seg_TypeDef seg) {
 uint8_t i;
 char newchar;
@@ -198,10 +198,11 @@ char newchar;
      }
  }
 
-void itoa(int n, char s[])
+/* itoa:  конвертируем n в символы в s */
+void itoa(int n, char * s)
  {
      int i, sign;
- 
+     
      if ((sign = n) < 0)  /* записываем знак */
          n = -n;          /* делаем n положительным числом */
      i = 0;
@@ -211,14 +212,26 @@ void itoa(int n, char s[])
      if (sign < 0)
          s[i++] = '-';
      s[i] = '\0';
-     reverse(s);
+     
  }
 
 void ssegWriteInt(uint16_t value) {
-  static char buf[3];
-  itoa(value, buf);
-  ssegWriteStr(buf, 3, SEG1);
+ static char buf[3];
+  
+ memset(buf, 0x00, sizeof(buf));
+  
+ itoa(value, buf);
+  
+ reverse(buf);
+
+  if (value < 10) 
+  ssegWriteStr(buf, 3, SEG3);
+  else if (value < 99)  
+   ssegWriteStr(buf, 3, SEG2);  
+  else if (value > 99) 
+    ssegWriteStr(buf, 3, SEG1);
 }
+
 
 void ssegClear(void) {
 uint8_t i;
