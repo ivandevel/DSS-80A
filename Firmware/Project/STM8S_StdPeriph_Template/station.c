@@ -12,7 +12,7 @@ __no_init volatile uint16_t eeSetpoint;
 uint8_t prediv = 0;
 uint32_t tempaccum;
 uint16_t timedivider;
-uint16_t SetpointCurrent;
+//uint16_t SetpointCurrent;
 static uint8_t adccount=0;
 static uint8_t display_setpoint=15;
 uint16_t Temperature = 0;
@@ -100,6 +100,8 @@ void Soldering_Main(void)
 			if (state != 0) {
                           StbyMode = MODE_WORKING;
                           
+                          display_setpoint = 15;
+                          
 				if (state == RIGHT_SPIN) {
 					Setpoint+=5;
                                         if (Setpoint >= 450) Setpoint = 450;
@@ -146,15 +148,7 @@ void Soldering_ISR (void)
      
      
    if (timedivider == 50)
-   {
-    // ≈сли изменилось значение уставки...
-    if (SetpointCurrent != Setpoint)
-    {
-      SetpointCurrent = Setpoint;
-      // флаг на отображение уставки в течение 5 * 50 мсек
-      display_setpoint = 15; 
-    }
-    
+   {   
     //≈сли задано врем€ на отображение уставки
     if (display_setpoint)
     {
@@ -169,8 +163,10 @@ void Soldering_ISR (void)
         eeSetpoint = Setpoint;
       }
     }
-     ssegWriteStr("   ", 3, SEG1);
-          switch(StbyMode)
+    
+    ssegWriteStr("   ", 3, SEG1);
+   
+    switch(StbyMode)
       {
     case MODE_WORKING:
       ssegWriteInt(*lcddata);
@@ -179,6 +175,7 @@ void Soldering_ISR (void)
       ssegWriteStr("Stb", 3, SEG1);
       break; 
       }
+    
    }
    
    if (timedivider == 95)
