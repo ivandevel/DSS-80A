@@ -178,7 +178,7 @@ void Soldering_ISR (void)
     
    }
    
-   if (timedivider == 99)
+   if (timedivider == 98)
    {
      TIM2_SetCompare3(0);
    }

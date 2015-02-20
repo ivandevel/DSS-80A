@@ -1,5 +1,7 @@
 ### DSS-80A soldering station project. ###
 
+![Alt text](/Pictures/pcb_view.jpg?raw=true "Optional Title")
+
 Main goals:
 1) SMPS Power supply (16V, 4A) based on TOP248YN.
 
