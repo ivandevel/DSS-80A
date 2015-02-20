@@ -1,9 +1,10 @@
-### DSS-80A soldering station project. ###
+# DSS-80A soldering station project.
 
-![Alt text](/Pictures/pcb_view.jpg?raw=true "Optional Title")
+![DSS-80A](/Pictures/pcb_view.jpg?raw=true)
 
-Main goals:
-1) SMPS Power supply (16V, 4A) based on TOP248YN.
+### Main goals ###
+
+1) SMPS Power supply (16V, 4A) based on TOP248YN IC.
 
 2) Er$a i-Tool Pico Soldering Heater (013100J) with Er$a tip holder (3IT1040-00)
 
