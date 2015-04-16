@@ -226,7 +226,7 @@ void ssegWriteInt(uint16_t value) {
 
   if (value < 10) 
   ssegWriteStr(buf, 3, SEG3);
-  else if (value < 99)  
+  else if (value <= 99)  
    ssegWriteStr(buf, 3, SEG2);  
   else if (value > 99) 
     ssegWriteStr(buf, 3, SEG1);
